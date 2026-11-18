@@ -37,4 +37,3 @@ results/**/model/
 .coverage
 .mypy_cache/
 .ruff_cache/
-tests/
