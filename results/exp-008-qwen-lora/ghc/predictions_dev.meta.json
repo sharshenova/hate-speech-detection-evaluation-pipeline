@@ -1,0 +1,7 @@
+{
+  "source": "exp-008-qwen-lora GHC retrain adapter",
+  "split": "dev",
+  "f1_macro": 0.7300918318811753,
+  "parse_failures": 0,
+  "n_rows": 2195
+}

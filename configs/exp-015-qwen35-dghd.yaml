@@ -1,0 +1,55 @@
+# Qwen3.5-9B bf16 LoRA on DGHD - combined prompt (identity axes + adversarial/generated).
+# Requires: .venv-cu128 on xeon (RTX 5090, sm_120)
+# Run: CUDA_VISIBLE_DEVICES=1 .venv-cu128/bin/python scripts/training/train.py \
+#        --config configs/exp-015-qwen35-dghd.yaml --dataset dghd
+
+experiment_id: exp-015-qwen35-dghd
+dataset: dghd
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: lora_causal_lm
+  name_or_path: Qwen/Qwen3.5-9B
+  device: auto
+  qlora: false
+  bf16: true
+  enable_thinking: false
+  max_length: 256
+  max_new_tokens: 8
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  batch_size: 2
+  gradient_accumulation_steps: 16
+  epochs: 3
+  max_grad_norm: 1.0
+  gradient_checkpointing: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  inference_batch_size: 16
+  train_eval_sample: 2000
+  epoch_eval_sample: 2000
+  cuda:
+    batch_size: 2
+    gradient_accumulation_steps: 16
+    inference_batch_size: 16
+    num_workers: 4
+    pin_memory: true
+  early_stopping:
+    enabled: true
+    patience: 1
+    metric: macro_f1
+  prompt_config_by_dataset:
+    dghd: configs/prompts/dghd-lora-classify-combined.yaml
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: false
+
+results_dir: results/exp-015-qwen35-dghd

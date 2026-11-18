@@ -1,0 +1,197 @@
+{
+  "experiment_id": "exp-017-qwen35-ghc-recipe008",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-017-qwen35-ghc-recipe008.yaml",
+  "prompt_id": "ghc-lora-classify",
+  "trained_at_utc": "2026-07-28T17:01:29.451057+00:00",
+  "device": "cuda",
+  "primary_metric": "macro_f1",
+  "threshold": null,
+  "dev_threshold_macro_f1": null,
+  "best_epoch": 2,
+  "epochs_run": 3,
+  "total_training_seconds": 8428.9,
+  "class_balanced_sampling": false,
+  "parse_failures": {
+    "train": 0,
+    "dev": 0,
+    "test": 0
+  },
+  "train_eval_note": "train metrics computed on a stratified sample of 2,000 rows",
+  "epoch_eval_note": "epoch dev F1 on stratified sample of 2,000 dev rows",
+  "data": {
+    "train_rows": 19753,
+    "dev_rows": 2195,
+    "test_rows": 5470,
+    "train_class_distribution": {
+      "0": 18010,
+      "1": 1743
+    },
+    "dev_class_distribution": {
+      "0": 2001,
+      "1": 194
+    },
+    "test_class_distribution": {
+      "0": 4963,
+      "1": 507
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.044896157542229115,
+      "dev_loss": null,
+      "train_macro_f1": null,
+      "dev_macro_f1": 0.6883678364049483,
+      "dev_parse_failures": 0,
+      "learning_rate_end": 0.0001417241379310345,
+      "train_seconds": 2745.1,
+      "eval_seconds": 84.7
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.03222132297180124,
+      "dev_loss": null,
+      "train_macro_f1": null,
+      "dev_macro_f1": 0.7519235211410924,
+      "dev_parse_failures": 0,
+      "learning_rate_end": 7.06896551724138e-05,
+      "train_seconds": 2688.7,
+      "eval_seconds": 84.5
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0098113755566853,
+      "dev_loss": null,
+      "train_macro_f1": null,
+      "dev_macro_f1": 0.7225662620757989,
+      "dev_parse_failures": 0,
+      "learning_rate_end": 0.0,
+      "train_seconds": 2734.4,
+      "eval_seconds": 90.3
+    }
+  ],
+  "metrics": {
+    "train": {
+      "accuracy": 0.9435,
+      "precision_macro": 0.947369297050187,
+      "recall_macro": 0.9435,
+      "f1_macro": 0.9433775681467254,
+      "precision_weighted": 0.947369297050187,
+      "recall_weighted": 0.9435,
+      "f1_weighted": 0.9433775681467252,
+      "per_class": {
+        "0": {
+          "precision": 0.9057639524245197,
+          "recall": 0.99,
+          "f1": 0.9460105112279026,
+          "support": 1000
+        },
+        "1": {
+          "precision": 0.9889746416758545,
+          "recall": 0.897,
+          "f1": 0.940744625065548,
+          "support": 1000
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.91      0.99      0.95      1000\n           1       0.99      0.90      0.94      1000\n\n    accuracy                           0.94      2000\n   macro avg       0.95      0.94      0.94      2000\nweighted avg       0.95      0.94      0.94      2000\n"
+    },
+    "dev": {
+      "accuracy": 0.9211845102505695,
+      "precision_macro": 0.7559171435311933,
+      "recall_macro": 0.7403192733530142,
+      "f1_macro": 0.7477891241178912,
+      "precision_weighted": 0.9188402922829187,
+      "recall_weighted": 0.9211845102505695,
+      "f1_weighted": 0.9199459717781933,
+      "per_class": {
+        "0": {
+          "precision": 0.9538232373386296,
+          "recall": 0.9600199900049975,
+          "f1": 0.9569115815691158,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.5580110497237569,
+          "recall": 0.520618556701031,
+          "f1": 0.5386666666666666,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.96      0.96      2001\n           1       0.56      0.52      0.54       194\n\n    accuracy                           0.92      2195\n   macro avg       0.76      0.74      0.75      2195\nweighted avg       0.92      0.92      0.92      2195\n"
+    },
+    "test": {
+      "accuracy": 0.9160877513711152,
+      "precision_macro": 0.7505516705516706,
+      "recall_macro": 0.7563029534929285,
+      "f1_macro": 0.7533821756585115,
+      "precision_weighted": 0.9170592949605746,
+      "recall_weighted": 0.9160877513711152,
+      "f1_weighted": 0.9165638199023473,
+      "per_class": {
+        "0": {
+          "precision": 0.954949494949495,
+          "recall": 0.9524481160588354,
+          "f1": 0.9536971653384445,
+          "support": 4963
+        },
+        "1": {
+          "precision": 0.5461538461538461,
+          "recall": 0.5601577909270217,
+          "f1": 0.5530671859785784,
+          "support": 507
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.95      0.95      4963\n           1       0.55      0.56      0.55       507\n\n    accuracy                           0.92      5470\n   macro avg       0.75      0.76      0.75      5470\nweighted avg       0.92      0.92      0.92      5470\n"
+    }
+  },
+  "model": {
+    "type": "lora_causal_lm",
+    "name_or_path": "Qwen/Qwen3.5-9B",
+    "device": "auto",
+    "qlora": false,
+    "bf16": true,
+    "enable_thinking": false,
+    "max_length": 256,
+    "max_new_tokens": 8,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 16,
+    "epochs": 3,
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": true,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "inference_batch_size": 16,
+    "train_eval_sample": 2000,
+    "epoch_eval_sample": 2000,
+    "cuda": {
+      "batch_size": 2,
+      "gradient_accumulation_steps": 16,
+      "inference_batch_size": 16,
+      "num_workers": 4,
+      "pin_memory": true
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 1,
+      "metric": "macro_f1"
+    },
+    "prompt_config_by_dataset": {
+      "ghc": "configs/prompts/ghc-lora-classify.yaml"
+    },
+    "num_workers": 4,
+    "pin_memory": true,
+    "_device": "cuda"
+  },
+  "training": {
+    "primary_metric": "macro_f1",
+    "threshold_tuning": {
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,7 @@
+layer	train_corpus	eval_set	model	decode	n_identity_terms	n_nonhate	n_hate	n_missing_excluded	FPR	FNR	FP	FN	FPED	FNED
+6-fairness	GHC	hatecheck	DeBERTa-large	threshold	7	873	2563	292	0.358534	0.244245	313	626	0.766881	0.783517
+6-fairness	DGHD	hatecheck	DeBERTa-large	threshold	7	873	2563	292	0.021764	0.017167	19	44	0.066884	0.025608
+6-fairness	KTC	hatecheck	DeBERTa-large	threshold	7	873	2563	292	0.22795	0.310574	199	796	0.526908	1.058165
+6-fairness	GHC	hatecheck	Qwen3.5	greedy	7	873	2563	292	0.153494	0.065938	134	169	0.482122	0.221899
+6-fairness	DGHD	hatecheck	Qwen3.5	logit	7	873	2563	292	0.005727	0.008974	5	23	0.052418	0.090205
+6-fairness	KTC	hatecheck	Qwen3.5	logit	7	873	2563	292	0.034364	0.312134	30	800	0.170185	0.586405

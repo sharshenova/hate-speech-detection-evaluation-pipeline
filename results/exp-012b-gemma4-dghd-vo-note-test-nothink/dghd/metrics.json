@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-012b-gemma4-dghd-vo-note-test-nothink",
+  "dataset": "dghd",
+  "seed": 42,
+  "config_path": "configs/exp-012b-gemma4-dghd-vo-note-test-nothink.yaml",
+  "prompt_config_path": "configs/prompts/dghd-zero-shot-short.yaml",
+  "prompt_id": "dghd-zero-shot-short",
+  "evaluated_at_utc": "2026-07-22T14:59:54.499219+00:00",
+  "eval_split": "test",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 4117,
+  "class_distribution": {
+    "0": 1850,
+    "1": 2267
+  },
+  "metrics": {
+    "test": {
+      "accuracy": 0.8212290502793296,
+      "precision_macro": 0.8314846200062377,
+      "recall_macro": 0.8304623326458351,
+      "f1_macro": 0.8212201796841886,
+      "precision_weighted": 0.8404879306928076,
+      "recall_weighted": 0.8212290502793296,
+      "f1_weighted": 0.8210926266437122,
+      "per_class": {
+        "0": {
+          "precision": 0.742595818815331,
+          "recall": 0.9216216216216216,
+          "f1": 0.8224794983116257,
+          "support": 1850
+        },
+        "1": {
+          "precision": 0.9203734211971444,
+          "recall": 0.7393030436700485,
+          "f1": 0.8199608610567515,
+          "support": 2267
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.74      0.92      0.82      1850\n           1       0.92      0.74      0.82      2267\n\n    accuracy                           0.82      4117\n   macro avg       0.83      0.83      0.82      4117\nweighted avg       0.84      0.82      0.82      4117\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "dghd-zero-shot-short",
+    "name": "DGHD zero-shot - Short DGHD",
+    "description": "Compact DGHD hate definition: abusive speech targeting listed group characteristics; identity mentions or offense alone are not hate without group-targeted abuse.\n"
+  }
+}

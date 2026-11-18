@@ -1,0 +1,59 @@
+{
+  "experiment_id": "exp-009d-gemma4-few-shot-vo-hard10",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-009d-gemma4-few-shot-vo-hard10.yaml",
+  "prompt_config_path": "configs/prompts/ghc-few-shot-short-10x10.yaml",
+  "prompt_id": "ghc-few-shot-short-10x10",
+  "evaluated_at_utc": "2026-07-20T02:54:25.685247+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 2195,
+  "class_distribution": {
+    "0": 2001,
+    "1": 194
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.910250569476082,
+      "precision_macro": 0.6568807339449542,
+      "recall_macro": 0.5132150419635544,
+      "f1_macro": 0.505149176784016,
+      "precision_weighted": 0.868353848404422,
+      "recall_weighted": 0.910250569476082,
+      "f1_weighted": 0.8737384097117921,
+      "per_class": {
+        "0": {
+          "precision": 0.9137614678899083,
+          "recall": 0.9955022488755623,
+          "f1": 0.9528820856254484,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.4,
+          "recall": 0.030927835051546393,
+          "f1": 0.05741626794258373,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.91      1.00      0.95      2001\n           1       0.40      0.03      0.06       194\n\n    accuracy                           0.91      2195\n   macro avg       0.66      0.51      0.51      2195\nweighted avg       0.87      0.91      0.87      2195\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": true,
+    "think": true,
+    "max_new_tokens": 512,
+    "temperature": 0,
+    "request_timeout_s": 300,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "ghc-few-shot-short-10x10",
+    "name": "GHC few-shot - Short GHC + 10/10",
+    "description": "Same Short GHC rule as exp-007d, plus 10 hate and 10 non-hate GHC train examples mined from QLoRA hard errors / labeled train (see few_shot_examples_path).\n"
+  }
+}

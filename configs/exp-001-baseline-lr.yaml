@@ -1,0 +1,40 @@
+# TF-IDF + logistic regression baseline (sanity check).
+# Run: python scripts/training/train.py --config configs/exp-001-baseline-lr.yaml
+
+experiment_id: exp-001-baseline-lr
+dataset: ghc
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+  # Omit paths to resolve from dataset id via src/hsd/data/paths.py
+  # train_path: data/processed/ghc/ghc_train_canonical.tsv
+  # dev_path: data/processed/ghc/ghc_dev_canonical.tsv
+  # test_path: data/processed/ghc/ghc_test_canonical.tsv
+
+model:
+  type: tfidf_logistic_regression
+  tfidf:
+    max_features: 50000
+    ngram_range: [1, 2]
+    min_df: 2
+    max_df: 0.95
+    sublinear_tf: true
+  logistic_regression:
+    C: 1.0
+    class_weight: balanced
+    max_iter: 1000
+    solver: lbfgs
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: true
+    split: dev
+    metric: macro_f1
+    min_threshold: 0.05
+    max_threshold: 0.95
+    step: 0.01
+
+results_dir: results/exp-001-baseline-lr

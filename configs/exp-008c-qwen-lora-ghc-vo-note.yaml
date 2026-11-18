@@ -1,0 +1,57 @@
+# QLoRA GHC - Short GHC prompt + exp-008 hyperparameters (lr 2e-4, 2k dev sample).
+# Run (4090): CUDA_VISIBLE_DEVICES=1 python scripts/training/train.py \
+#        --config configs/exp-008c-qwen-lora-ghc-vo-note.yaml --dataset ghc
+# Logit re-eval after training:
+#   CUDA_VISIBLE_DEVICES=1 python scripts/training/eval_lora_adapter.py \
+#     --config configs/exp-008c-qwen-lora-ghc-vo-note.yaml --dataset ghc --logit-threshold
+
+experiment_id: exp-008c-qwen-lora-ghc-vo-note
+dataset: ghc
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: lora_causal_lm
+  name_or_path: Qwen/Qwen2.5-3B-Instruct
+  device: auto
+  qlora: true
+  load_in_4bit: true
+  bf16: true
+  max_length: 256
+  max_new_tokens: 8
+  learning_rate: 2.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  epochs: 3
+  max_grad_norm: 1.0
+  gradient_checkpointing: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  inference_batch_size: 16
+  train_eval_sample: 2000
+  epoch_eval_sample: 2000
+  cuda:
+    batch_size: 4
+    gradient_accumulation_steps: 8
+    inference_batch_size: 32
+    num_workers: 4
+    pin_memory: true
+  early_stopping:
+    enabled: true
+    patience: 1
+    metric: macro_f1
+  prompt_config_by_dataset:
+    ghc: configs/prompts/ghc-lora-classify-short.yaml
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: false
+
+results_dir: results/exp-008c-qwen-lora-ghc-vo-note

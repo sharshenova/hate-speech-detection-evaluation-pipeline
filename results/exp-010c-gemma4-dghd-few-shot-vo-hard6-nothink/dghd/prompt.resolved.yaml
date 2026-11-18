@@ -1,0 +1,108 @@
+prompt_id: dghd-few-shot-short-6x6
+name: DGHD few-shot - Short DGHD + 6/6
+description: 'Same Short DGHD definition as exp-010b, with 6 hate + 6 non-hate
+  DGHD train examples (interleaved). Designed for Gemma without thinking.
+
+  '
+dataset: dghd
+eval_split: dev
+text_placeholder: '{text}'
+few_shot_examples_path: data/processed/dghd/hard_errors/dghd_few_shot_hard_examples_6x6.yaml
+few_shot_interleave: true
+messages:
+  system: 'You classify social media posts. Reply with exactly one word: hate or non-hate.
+
+    Do not explain. Do not restate the examples.
+
+    '
+  user: 'Study these labeled examples, then classify the new post.
+
+
+    {few_shot_block}
+
+
+    Post:
+
+    {text}
+
+
+    Is this hate speech? Hate is abusive speech targeting a group or its
+
+    members based on disability, gender, immigration status, national origin,
+
+    race/ethnicity, religion, sexual orientation, class, or age. Identity
+
+    mentions or offensive language alone are not hate unless the post abusively
+
+    targets a group or its members. Answer with exactly one word: hate or
+
+    non-hate.
+
+    '
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false
+few_shot_examples:
+- source_post_id: null
+  category: nat_refugees_violence
+  post: Greek Council for Refugees needs to be burned
+  label: hate
+- source_post_id: null
+  category: migration_disease_burden_claim
+  post: Taxpayers are likely to face a huge and ever-increasing burden because of
+    the growing flow of migrants from countries where complex infectious diseases
+    are common
+  label: non-hate
+- source_post_id: null
+  category: rel_muslim_derogation
+  post: muslim women look like bloody letterboxes
+  label: hate
+- source_post_id: null
+  category: counter_challenge_to_hate
+  post: Why the fuck do you think lesbians are subhuman?
+  label: non-hate
+- source_post_id: null
+  category: rae_racial_hierarchy
+  post: let's just say I wouldn't want to be a black. It feels good to be of a superior
+    race.
+  label: hate
+- source_post_id: null
+  category: vo_profanity_only
+  post: fuck it, I am leaving ths place!
+  label: non-hate
+- source_post_id: null
+  category: gen_sexism
+  post: Don't be such a bitch about it, you sound as weak as women are
+  label: hate
+- source_post_id: null
+  category: race_mention_non_hate
+  post: she is black and she is not stupid
+  label: non-hate
+- source_post_id: null
+  category: sxo_anti_lesbian
+  post: The existence of dykes is hateful to me
+  label: hate
+- source_post_id: null
+  category: gender_inclusion_discussion
+  post: If you're gonna mention trans men to be more inclusive, that's good. But don't
+    substitute people for women!
+  label: non-hate
+- source_post_id: null
+  category: nat_immigrant_dehumanization
+  post: Friendly reminder that over 30k dirty illegal alien vermin voted in AZ
+  label: hate
+- source_post_id: null
+  category: calling_out_sexist_bullying
+  post: Stupid chads and roasties! Always fucking bullying women with their disgusting
+    stereotypes and slurs
+  label: non-hate

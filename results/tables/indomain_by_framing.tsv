@@ -1,0 +1,7 @@
+layer	train_corpus	eval_set	model	stratum	n	n_hate	accuracy	precision_macro	recall_macro	f1_macro	hate_P	hate_R	hate_F1	FP	FN	FPR	FNR
+3-slice	GHC	test	DeBERTa-large	explicit	327	327	0.633028	0.5	0.316514	0.38764	1.0	0.633028	0.775281	0	120		0.366972
+3-slice	GHC	test	DeBERTa-large	implicit	144	144	0.465278	0.5	0.232639	0.317536	1.0	0.465278	0.635071	0	77		0.534722
+3-slice	GHC	test	DeBERTa-large	neither	36	36	0.666667	0.5	0.333333	0.4	1.0	0.666667	0.8	0	12		0.333333
+3-slice	GHC	test	Qwen3.5	explicit	327	327	0.59633	0.5	0.298165	0.373563	1.0	0.59633	0.747126	0	132		0.40367
+3-slice	GHC	test	Qwen3.5	implicit	144	144	0.472222	0.5	0.236111	0.320755	1.0	0.472222	0.641509	0	76		0.527778
+3-slice	GHC	test	Qwen3.5	neither	36	36	0.555556	0.5	0.277778	0.357143	1.0	0.555556	0.714286	0	16		0.444444

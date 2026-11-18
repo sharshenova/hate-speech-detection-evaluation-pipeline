@@ -1,0 +1,27 @@
+# LoRA classification prompt - DGHD with explicit identity/protected-characteristics definition.
+
+prompt_id: dghd-lora-classify-identity
+dataset: dghd
+
+messages:
+  system: |
+    You classify social media posts for hate speech. Answer only hate or non-hate.
+  user: |
+    A post is hate if it expresses hatred toward a person or group based on identity
+    or protected characteristics, such as race, national or ethnic origin, immigration
+    status, religion, gender, sexual orientation, disability, class, or age.
+
+    Post:
+    {text}
+
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  parse_as_hate:
+    - hate
+    - "yes"
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - "no"

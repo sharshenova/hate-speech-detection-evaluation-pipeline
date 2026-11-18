@@ -1,0 +1,13 @@
+layer	train_corpus	eval_set	model	stratum	n	n_hate	accuracy	precision_macro	recall_macro	f1_macro	hate_P	hate_R	hate_F1	FP	FN	FPR	FNR
+3-slice	DGHD	test	DeBERTa-large	(missing)	763	763	0.980341	0.5	0.49017	0.495036	1.0	0.980341	0.990073	0	15		0.019659
+3-slice	DGHD	test	DeBERTa-large	animosity	315	315	0.746032	0.5	0.373016	0.427273	1.0	0.746032	0.854545	0	80		0.253968
+3-slice	DGHD	test	DeBERTa-large	dehumanization	70	70	0.914286	0.5	0.457143	0.477612	1.0	0.914286	0.955224	0	6		0.085714
+3-slice	DGHD	test	DeBERTa-large	derogation	1036	1036	0.86583	0.5	0.432915	0.464046	1.0	0.86583	0.928091	0	139		0.13417
+3-slice	DGHD	test	DeBERTa-large	support	35	35	0.942857	0.5	0.471429	0.485294	1.0	0.942857	0.970588	0	2		0.057143
+3-slice	DGHD	test	DeBERTa-large	threatening	48	48	0.979167	0.5	0.489583	0.494737	1.0	0.979167	0.989474	0	1		0.020833
+3-slice	DGHD	test	Qwen3.5	(missing)	763	763	0.989515	0.5	0.494758	0.497365	1.0	0.989515	0.99473	0	8		0.010485
+3-slice	DGHD	test	Qwen3.5	animosity	315	315	0.806349	0.5	0.403175	0.446397	1.0	0.806349	0.892794	0	61		0.193651
+3-slice	DGHD	test	Qwen3.5	dehumanization	70	70	0.942857	0.5	0.471429	0.485294	1.0	0.942857	0.970588	0	4		0.057143
+3-slice	DGHD	test	Qwen3.5	derogation	1036	1036	0.916023	0.5	0.458012	0.478086	1.0	0.916023	0.956171	0	87		0.083977
+3-slice	DGHD	test	Qwen3.5	support	35	35	0.885714	0.5	0.442857	0.469697	1.0	0.885714	0.939394	0	4		0.114286
+3-slice	DGHD	test	Qwen3.5	threatening	48	48	1.0	0.5	0.5	0.5	1.0	1.0	1.0	0	0		0.0

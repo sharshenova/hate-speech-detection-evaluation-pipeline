@@ -1,0 +1,49 @@
+# DeBERTa-v3-base LR probe: 3.0e-5 (sweep 2e-5-5e-5 vs tuned RoBERTa).
+# Run: python scripts/training/train.py --config configs/exp-004b-deberta-lr3e-5.yaml --dataset {ghc|dghd|ktc}
+
+experiment_id: exp-004b-deberta-lr3e-5
+dataset: ghc
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: deberta_sequence_classifier
+  pretrained_name: microsoft/deberta-v3-base
+  device: auto
+  max_length: 128
+  learning_rate: 3.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  epochs: 3
+  class_weight: balanced
+  max_grad_norm: 1.0
+  gradient_checkpointing: true
+  train_eval_sample: 5000
+  cuda:
+    batch_size: 64
+    gradient_accumulation_steps: 1
+    gradient_checkpointing: false
+    num_workers: 8
+    pin_memory: true
+    bf16: false  # DeBERTa unstable in bf16; use fp32
+  early_stopping:
+    enabled: true
+    patience: 1
+    metric: macro_f1
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: true
+    split: dev
+    metric: macro_f1
+    min_threshold: 0.05
+    max_threshold: 0.95
+    step: 0.01
+
+results_dir: results/exp-004b-deberta-lr3e-5

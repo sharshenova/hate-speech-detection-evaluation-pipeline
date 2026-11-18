@@ -1,0 +1,9 @@
+{
+  "source": "exp-008a-qwen-lora-dghd-identity DGHD adapter (test macro-F1 0.889)",
+  "split": "train_sample",
+  "sample_size": 2000,
+  "sample_seed": 43,
+  "f1_macro": 0.9944999876249722,
+  "parse_failures": 0,
+  "adapter_dir": "results/exp-008a-qwen-lora-dghd-identity/dghd/model"
+}

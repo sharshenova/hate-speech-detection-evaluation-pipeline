@@ -1,0 +1,29 @@
+# LoRA classification prompt - Detailed GHC (hd OR cv -> hate).
+# Used for Qwen2.5-3B-Instruct SFT in exp-008.
+
+prompt_id: ghc-lora-classify
+dataset: ghc
+
+messages:
+  system: |
+    You classify social media posts for hate speech under the strict Gab Hate Corpus
+    (GHC) definition. Answer only hate or non-hate.
+  user: |
+    A post is hate if it contains dehumanizing rhetoric (HD) or a call for violence (CV)
+    against a social group or someone because of group membership. Offensive or vulgar
+    language alone is non-hate. Political hate counts when it meets HD or CV.
+
+    Post:
+    {text}
+
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  parse_as_hate:
+    - hate
+    - "yes"
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - "no"

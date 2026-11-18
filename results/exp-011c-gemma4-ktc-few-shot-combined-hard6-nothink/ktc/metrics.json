@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-011c-gemma4-ktc-few-shot-short-6x6-nothink",
+  "dataset": "ktc",
+  "seed": 42,
+  "config_path": "configs/exp-011c-gemma4-ktc-few-shot-short-6x6-nothink.yaml",
+  "prompt_config_path": "configs/prompts/ktc-few-shot-short-6x6.yaml",
+  "prompt_id": "ktc-few-shot-short-6x6",
+  "evaluated_at_utc": "2026-07-22T08:22:19.724697+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 16978,
+  "class_distribution": {
+    "0": 13492,
+    "1": 3486
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.8098126987866651,
+      "precision_macro": 0.7064186306987326,
+      "recall_macro": 0.6105774374444966,
+      "f1_macro": 0.6292147690362234,
+      "precision_weighted": 0.7819781578158705,
+      "recall_weighted": 0.8098126987866651,
+      "f1_weighted": 0.7817223971131008,
+      "per_class": {
+        "0": {
+          "precision": 0.8346266710140202,
+          "recall": 0.9486362288763712,
+          "f1": 0.8879869566725639,
+          "support": 13492
+        },
+        "1": {
+          "precision": 0.5782105903834449,
+          "recall": 0.27251864601262193,
+          "f1": 0.370442581399883,
+          "support": 3486
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.83      0.95      0.89     13492\n           1       0.58      0.27      0.37      3486\n\n    accuracy                           0.81     16978\n   macro avg       0.71      0.61      0.63     16978\nweighted avg       0.78      0.81      0.78     16978\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "ktc-few-shot-short-6x6",
+    "name": "KTC few-shot - Short KTC + 6/6",
+    "description": "Same Short KTC definition as exp-011b, with 6 hate + 6 non-hate KTC train examples (interleaved). Designed for Gemma without thinking.\n"
+  }
+}

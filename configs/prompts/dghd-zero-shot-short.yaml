@@ -1,0 +1,41 @@
+# Zero-shot - Short DGHD hate definition (Vidgen et al. 2021).
+# Used by exp-010b. Do not use GHC wording here (different label policy).
+
+prompt_id: dghd-zero-shot-short
+name: DGHD zero-shot - Short DGHD
+description: >
+  Compact DGHD hate definition: abusive speech targeting listed group
+  characteristics; identity mentions or offense alone are not hate without
+  group-targeted abuse.
+
+dataset: dghd
+eval_split: dev
+text_placeholder: "{text}"
+
+messages:
+  system: |
+    You classify social media posts. Answer only with the requested label.
+  user: |
+    Post:
+    {text}
+
+    Is this hate speech? Hate is abusive speech targeting a group or its
+    members based on disability, gender, immigration status, national origin,
+    race/ethnicity, religion, sexual orientation, class, or age. Identity
+    mentions or offensive language alone are not hate unless the post abusively
+    targets a group or its members. Answer with exactly one word: hate or
+    non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - yes
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - no

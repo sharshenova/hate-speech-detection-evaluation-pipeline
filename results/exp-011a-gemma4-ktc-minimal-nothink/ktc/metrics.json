@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-011a-gemma4-ktc-minimal-nothink",
+  "dataset": "ktc",
+  "seed": 42,
+  "config_path": "configs/exp-011a-gemma4-ktc-minimal-nothink.yaml",
+  "prompt_config_path": "configs/prompts/ktc-zero-shot-minimal.yaml",
+  "prompt_id": "ktc-zero-shot-minimal",
+  "evaluated_at_utc": "2026-07-22T01:33:25.182330+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 16978,
+  "class_distribution": {
+    "0": 13492,
+    "1": 3486
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.6844151254564731,
+      "precision_macro": 0.611583710100023,
+      "recall_macro": 0.6579422386509317,
+      "f1_macro": 0.6117264827650637,
+      "precision_weighted": 0.7671003857416446,
+      "recall_weighted": 0.6844151254564731,
+      "f1_weighted": 0.7107358155679827,
+      "per_class": {
+        "0": {
+          "precision": 0.8754615952732644,
+          "recall": 0.7028609546397866,
+          "f1": 0.7797237296497287,
+          "support": 13492
+        },
+        "1": {
+          "precision": 0.34770582492678165,
+          "recall": 0.6130235226620768,
+          "f1": 0.4437292358803987,
+          "support": 3486
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.88      0.70      0.78     13492\n           1       0.35      0.61      0.44      3486\n\n    accuracy                           0.68     16978\n   macro avg       0.61      0.66      0.61     16978\nweighted avg       0.77      0.68      0.71     16978\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "ktc-zero-shot-minimal",
+    "name": "KTC zero-shot - minimal",
+    "description": "Vague hate-speech question with no coding rules. Baseline for Gemma on KTC.\n"
+  }
+}

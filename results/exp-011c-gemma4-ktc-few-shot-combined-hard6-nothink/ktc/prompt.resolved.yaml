@@ -1,0 +1,111 @@
+prompt_id: ktc-few-shot-short-6x6
+name: KTC few-shot - Short KTC + 6/6
+description: 'Same Short KTC definition as exp-011b, with 6 hate +
+  6 non-hate KTC train examples (interleaved). Designed for Gemma without thinking.
+
+  '
+dataset: ktc
+eval_split: dev
+text_placeholder: '{text}'
+few_shot_examples_path: data/processed/ktc/hard_errors/ktc_few_shot_hard_examples_6x6.yaml
+few_shot_interleave: true
+messages:
+  system: 'You classify social media posts. Reply with exactly one word: hate or non-hate.
+
+    Do not explain. Do not restate the examples.
+
+    '
+  user: 'Study these labeled examples, then classify the new post.
+
+
+    {few_shot_block}
+
+
+    Post:
+
+    {text}
+
+
+    Is this hate speech? Hate is speech that attacks, threatens, or expresses
+
+    hatred toward a group or its members based on race/ethnicity, religion,
+
+    national origin, gender, gender identity, sexual orientation, disability,
+
+    age, or immigration/refugee status. Offensive, profane, or rude language
+
+    is not hate unless it attacks such a group. Reclaimed or everyday use of
+
+    slurs, and mentioning an identity without attacking it, are non-hate.
+
+    Answer with exactly one word: hate or non-hate.
+
+    '
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false
+few_shot_examples:
+- source_post_id: null
+  category: rae_racial_slur_attack
+  post: yah fucken filthy niggar
+  label: hate
+- source_post_id: null
+  category: reclaim_self_id_dyke
+  post: YEAH i'm a dyke and what about it
+  label: non-hate
+- source_post_id: null
+  category: opc_disability_derogation
+  post: goin to hell for this one...  How do you kill a retard?  Give him a knife
+    and say "Who's special?"
+  label: hate
+- source_post_id: null
+  category: reporting_racial_slur_victimization
+  post: Do y'all remember this?? White chicks were calling him a nigger throughout
+    high school
+  label: non-hate
+- source_post_id: null
+  category: rel_antisemitic_violence
+  post: i respect the arabs who kill jews in your case you say your ancestors are
+    christian so that explains why you are a zionist puppet
+  label: hate
+- source_post_id: null
+  category: quoting_slur_in_lesson_context
+  post: '"Nigger?" #lifelessons of a white kid who grew up in the 60''s. #blacklivesmatter'
+  label: non-hate
+- source_post_id: null
+  category: rel_anti_muslim_removal
+  post: <user> we need all muslims removed from power before they destroy us all
+  label: hate
+- source_post_id: null
+  category: calling_out_slur_use
+  post: <user> <user> <user> <user> <user> <user> i do not need to your personality
+    does enough i can not imagine how shitty you must be to be around a white kid
+    who calls black people niggers and trans women faggots that says enough 
+  label: non-hate
+- source_post_id: null
+  category: sxo_anti_queer
+  post: yeah i know disgusting queers
+  label: hate
+- source_post_id: null
+  category: ableist_insult_interpersonal
+  post: Are you fucking retarded? Do you even hockey?
+  label: non-hate
+- source_post_id: null
+  category: gen_misogynist_political_slur
+  post: Shared from Photos app 1 photo feminazi's busy killing babies and laundering
+    money to the democrats
+  label: hate
+- source_post_id: null
+  category: profanity_interpersonal
+  post: '@ScottStyleKing Fuck off dickhead you are and you should know it. Twat.'
+  label: non-hate

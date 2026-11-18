@@ -1,0 +1,34 @@
+# Zero-shot prompt - minimal (Version D). No label definition.
+# KTC ablation baseline for Gemma (pair with combined / few-shot).
+
+prompt_id: ktc-zero-shot-minimal
+name: KTC zero-shot - minimal
+description: >
+  Vague hate-speech question with no coding rules. Baseline for Gemma on KTC.
+
+dataset: ktc
+eval_split: dev
+text_placeholder: "{text}"
+
+messages:
+  system: |
+    You classify social media posts. Answer only with the requested label.
+  user: |
+    Post:
+    {text}
+
+    Is this hate speech? Answer with exactly one word: hate or non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - yes
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - no

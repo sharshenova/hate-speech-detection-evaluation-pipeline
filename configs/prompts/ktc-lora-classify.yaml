@@ -1,0 +1,27 @@
+# LoRA classification prompt - KTC strict (HateXplain hatespeech only; offensive -> non-hate).
+
+prompt_id: ktc-lora-classify
+dataset: ktc
+
+messages:
+  system: |
+    You classify social media posts for hate speech under a strict definition.
+    Answer only hate or non-hate.
+  user: |
+    A post is hate only if it is hateful speech targeting a group or identity.
+    Offensive, profane, or rude language without hate speech is non-hate.
+
+    Post:
+    {text}
+
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  parse_as_hate:
+    - hate
+    - "yes"
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - "no"

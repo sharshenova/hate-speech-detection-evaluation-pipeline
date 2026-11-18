@@ -1,0 +1,22 @@
+# Zero-shot Llama-3.2-3B on GHC dev - Detailed GHC prompt.
+# Run: python scripts/training/eval_zero_shot.py --config configs/exp-007b-zero-shot-strict-ghc.yaml
+
+experiment_id: exp-007b-zero-shot-strict-ghc
+dataset: ghc
+seed: 42
+eval_split: dev
+
+prompt_config: configs/prompts/ghc-zero-shot-detailed.yaml
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: ollama_chat
+  name_or_path: llama3.2:3b-instruct-q4_K_M
+  base_url: http://127.0.0.1:11434
+  max_new_tokens: 8
+  log_every: 100
+
+results_dir: results/exp-007b-zero-shot-strict-ghc

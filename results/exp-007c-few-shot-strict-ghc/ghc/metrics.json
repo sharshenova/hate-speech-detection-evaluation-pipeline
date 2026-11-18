@@ -1,0 +1,55 @@
+{
+  "experiment_id": "exp-007c-few-shot-strict-ghc",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-007c-few-shot-strict-ghc.yaml",
+  "prompt_config_path": "configs/prompts/ghc-few-shot-detailed.yaml",
+  "prompt_id": "ghc-few-shot-detailed",
+  "evaluated_at_utc": "2026-07-14T14:47:14.376858+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 138,
+  "eval_rows": 2195,
+  "class_distribution": {
+    "0": 2001,
+    "1": 194
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.6792710706150342,
+      "precision_macro": 0.5671740081574799,
+      "recall_macro": 0.6914236180878632,
+      "f1_macro": 0.5369165006461016,
+      "precision_weighted": 0.8902352391954393,
+      "recall_weighted": 0.6792710706150342,
+      "f1_weighted": 0.7482843789812381,
+      "per_class": {
+        "0": {
+          "precision": 0.959603118355776,
+          "recall": 0.6766616691654173,
+          "f1": 0.7936694021101993,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.1747448979591837,
+          "recall": 0.7061855670103093,
+          "f1": 0.28016359918200406,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.96      0.68      0.79      2001\n           1       0.17      0.71      0.28       194\n\n    accuracy                           0.68      2195\n   macro avg       0.57      0.69      0.54      2195\nweighted avg       0.89      0.68      0.75      2195\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "llama3.2:3b-instruct-q4_K_M",
+    "base_url": "http://127.0.0.1:11434",
+    "max_new_tokens": 8,
+    "log_every": 100
+  },
+  "prompt": {
+    "prompt_id": "ghc-few-shot-detailed",
+    "name": "GHC few-shot - Detailed",
+    "description": "Detailed GHC definition plus five paraphrased examples from difficult train cases (VO-only non-hate, HD political dehumanization, CV incitement). Examples are fixed for every dev post.\n"
+  }
+}

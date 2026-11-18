@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-009f-gemma4-vo-note-nothink",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-009f-gemma4-vo-note-nothink.yaml",
+  "prompt_config_path": "configs/prompts/ghc-zero-shot-short.yaml",
+  "prompt_id": "ghc-zero-shot-short",
+  "evaluated_at_utc": "2026-07-20T12:42:29.341753+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 2195,
+  "class_distribution": {
+    "0": 2001,
+    "1": 194
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.9025056947608201,
+      "precision_macro": 0.7012534484826676,
+      "recall_macro": 0.7161097286408342,
+      "f1_macro": 0.7083045610130506,
+      "precision_weighted": 0.9061339042711867,
+      "recall_weighted": 0.9025056947608201,
+      "f1_weighted": 0.9042406015949709,
+      "per_class": {
+        "0": {
+          "precision": 0.9501259445843828,
+          "recall": 0.9425287356321839,
+          "f1": 0.946312092323131,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.4523809523809524,
+          "recall": 0.4896907216494845,
+          "f1": 0.47029702970297027,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.94      0.95      2001\n           1       0.45      0.49      0.47       194\n\n    accuracy                           0.90      2195\n   macro avg       0.70      0.72      0.71      2195\nweighted avg       0.91      0.90      0.90      2195\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "ghc-zero-shot-short",
+    "name": "GHC zero-shot - Short GHC",
+    "description": "Minimal hate-speech question plus one compact rule distilled from the GHC paper: group-based attacks or calls for violence count as hate; offensive language alone does not. Tests whether a single precision-nudging note beats both the vague minimal prompt and the long Detailed GHC definition.\n"
+  }
+}

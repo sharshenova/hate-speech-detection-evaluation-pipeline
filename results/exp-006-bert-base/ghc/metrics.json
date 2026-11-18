@@ -1,0 +1,184 @@
+{
+  "experiment_id": "exp-006-bert-base",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-006-bert-base.yaml",
+  "trained_at_utc": "2026-07-13T17:49:18.578188+00:00",
+  "device": "cuda",
+  "primary_metric": "macro_f1",
+  "threshold": 0.8900000000000006,
+  "dev_threshold_macro_f1": 0.7282888893426305,
+  "best_epoch": 3,
+  "epochs_run": 3,
+  "total_training_seconds": 53.4,
+  "train_eval_note": "train metrics computed on a fixed stratified sample of 5,000 rows",
+  "data": {
+    "train_rows": 19753,
+    "dev_rows": 2195,
+    "test_rows": 5470,
+    "train_class_distribution": {
+      "0": 18010,
+      "1": 1743
+    },
+    "dev_class_distribution": {
+      "0": 2001,
+      "1": 194
+    },
+    "test_class_distribution": {
+      "0": 4963,
+      "1": 507
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5054909621627586,
+      "train_eval_loss": 0.35771143436431885,
+      "dev_loss": 0.3995087444782257,
+      "train_macro_f1": 0.709484833380915,
+      "dev_macro_f1": 0.6658142349666519,
+      "learning_rate_end": 1.4174311926605507e-05,
+      "train_seconds": 16.1,
+      "eval_seconds": 2.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3489038821514756,
+      "train_eval_loss": 0.3964393615722656,
+      "dev_loss": 0.48925065000851947,
+      "train_macro_f1": 0.7037317509731498,
+      "dev_macro_f1": 0.6547057708364425,
+      "learning_rate_end": 7.087155963302753e-06,
+      "train_seconds": 15.6,
+      "eval_seconds": 1.6
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.24901187042539946,
+      "train_eval_loss": 0.21937729716300963,
+      "dev_loss": 0.3480280637741089,
+      "train_macro_f1": 0.8195560242455922,
+      "dev_macro_f1": 0.7043771043771043,
+      "learning_rate_end": 0.0,
+      "train_seconds": 15.7,
+      "eval_seconds": 1.6
+    }
+  ],
+  "metrics": {
+    "train": {
+      "accuracy": 0.954,
+      "precision_macro": 0.8402159913344793,
+      "recall_macro": 0.9082077811749105,
+      "f1_macro": 0.8701397837951614,
+      "precision_weighted": 0.959808269967612,
+      "recall_weighted": 0.954,
+      "f1_weighted": 0.9560871133948442,
+      "per_class": {
+        "0": {
+          "precision": 0.9854227405247813,
+          "recall": 0.9638078525992543,
+          "f1": 0.9744954535373697,
+          "support": 4559
+        },
+        "1": {
+          "precision": 0.6950092421441775,
+          "recall": 0.8526077097505669,
+          "f1": 0.7657841140529531,
+          "support": 441
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.99      0.96      0.97      4559\n           1       0.70      0.85      0.77       441\n\n    accuracy                           0.95      5000\n   macro avg       0.84      0.91      0.87      5000\nweighted avg       0.96      0.95      0.96      5000\n"
+    },
+    "dev": {
+      "accuracy": 0.911617312072893,
+      "precision_macro": 0.7262143214822233,
+      "recall_macro": 0.7304170079908499,
+      "f1_macro": 0.7282888893426305,
+      "precision_weighted": 0.9124417834040354,
+      "recall_weighted": 0.911617312072893,
+      "f1_weighted": 0.9120240307034647,
+      "per_class": {
+        "0": {
+          "precision": 0.9524286429644466,
+          "recall": 0.9505247376311844,
+          "f1": 0.9514757378689345,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.5,
+          "recall": 0.5103092783505154,
+          "f1": 0.5051020408163265,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.95      0.95      2001\n           1       0.50      0.51      0.51       194\n\n    accuracy                           0.91      2195\n   macro avg       0.73      0.73      0.73      2195\nweighted avg       0.91      0.91      0.91      2195\n"
+    },
+    "test": {
+      "accuracy": 0.9089579524680073,
+      "precision_macro": 0.730701389457348,
+      "recall_macro": 0.7452902961202842,
+      "f1_macro": 0.7376801964466272,
+      "precision_weighted": 0.9118855237583283,
+      "recall_weighted": 0.9089579524680073,
+      "f1_weighted": 0.9103529749152403,
+      "per_class": {
+        "0": {
+          "precision": 0.9531154860970165,
+          "recall": 0.9462018940157163,
+          "f1": 0.9496461071789687,
+          "support": 4963
+        },
+        "1": {
+          "precision": 0.5082872928176796,
+          "recall": 0.5443786982248521,
+          "f1": 0.5257142857142857,
+          "support": 507
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.95      0.95      4963\n           1       0.51      0.54      0.53       507\n\n    accuracy                           0.91      5470\n   macro avg       0.73      0.75      0.74      5470\nweighted avg       0.91      0.91      0.91      5470\n"
+    }
+  },
+  "model": {
+    "type": "bert_sequence_classifier",
+    "pretrained_name": "bert-base-uncased",
+    "device": "auto",
+    "max_length": 128,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "class_weight": "balanced",
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": false,
+    "train_eval_sample": 5000,
+    "cuda": {
+      "batch_size": 64,
+      "gradient_accumulation_steps": 1,
+      "gradient_checkpointing": false,
+      "num_workers": 8,
+      "pin_memory": true,
+      "bf16": true
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 1,
+      "metric": "macro_f1"
+    },
+    "num_workers": 8,
+    "pin_memory": true,
+    "bf16": true
+  },
+  "training": {
+    "primary_metric": "macro_f1",
+    "threshold_tuning": {
+      "enabled": true,
+      "split": "dev",
+      "metric": "macro_f1",
+      "min_threshold": 0.05,
+      "max_threshold": 0.95,
+      "step": 0.01
+    }
+  }
+}

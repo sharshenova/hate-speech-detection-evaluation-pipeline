@@ -1,0 +1,131 @@
+{
+  "experiment_id": "exp-001-baseline-lr",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-001-baseline-lr.yaml",
+  "trained_at_utc": "2026-10-05T15:58:18.264869+00:00",
+  "primary_metric": "macro_f1",
+  "threshold": 0.5600000000000003,
+  "dev_threshold_macro_f1": 0.6842635212888377,
+  "data": {
+    "train_rows": 19753,
+    "dev_rows": 2195,
+    "test_rows": 5470,
+    "train_class_distribution": {
+      "0": 18010,
+      "1": 1743
+    },
+    "dev_class_distribution": {
+      "0": 2001,
+      "1": 194
+    },
+    "test_class_distribution": {
+      "0": 4963,
+      "1": 507
+    }
+  },
+  "metrics": {
+    "train": {
+      "accuracy": 0.9596516984761808,
+      "precision_macro": 0.8455330308900111,
+      "recall_macro": 0.9646593353663723,
+      "f1_macro": 0.8934069112232688,
+      "precision_weighted": 0.9703141269190642,
+      "recall_weighted": 0.9596516984761808,
+      "f1_weighted": 0.9626082953899217,
+      "per_class": {
+        "0": {
+          "precision": 0.9970545769563962,
+          "recall": 0.9585785674625208,
+          "f1": 0.9774380750176929,
+          "support": 18010
+        },
+        "1": {
+          "precision": 0.694011484823626,
+          "recall": 0.9707401032702238,
+          "f1": 0.8093757474288448,
+          "support": 1743
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       1.00      0.96      0.98     18010\n           1       0.69      0.97      0.81      1743\n\n    accuracy                           0.96     19753\n   macro avg       0.85      0.96      0.89     19753\nweighted avg       0.97      0.96      0.96     19753\n"
+    },
+    "dev": {
+      "accuracy": 0.8861047835990888,
+      "precision_macro": 0.667691791079019,
+      "recall_macro": 0.7071142263919586,
+      "f1_macro": 0.6842635212888377,
+      "precision_weighted": 0.8994429816155817,
+      "recall_weighted": 0.8861047835990888,
+      "f1_weighted": 0.8920852654453185,
+      "per_class": {
+        "0": {
+          "precision": 0.9492047203694202,
+          "recall": 0.9245377311344328,
+          "f1": 0.9367088607594937,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.3861788617886179,
+          "recall": 0.4896907216494845,
+          "f1": 0.4318181818181818,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.92      0.94      2001\n           1       0.39      0.49      0.43       194\n\n    accuracy                           0.89      2195\n   macro avg       0.67      0.71      0.68      2195\nweighted avg       0.90      0.89      0.89      2195\n"
+    },
+    "test": {
+      "accuracy": 0.8813528336380256,
+      "precision_macro": 0.6686160913697765,
+      "recall_macro": 0.7088269764303181,
+      "f1_macro": 0.6854040498879383,
+      "precision_weighted": 0.8955081266850751,
+      "recall_weighted": 0.8813528336380256,
+      "f1_weighted": 0.8876620485885148,
+      "per_class": {
+        "0": {
+          "precision": 0.947139303482587,
+          "recall": 0.9206125327422929,
+          "f1": 0.9336875447021559,
+          "support": 4963
+        },
+        "1": {
+          "precision": 0.39009287925696595,
+          "recall": 0.4970414201183432,
+          "f1": 0.4371205550737207,
+          "support": 507
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.92      0.93      4963\n           1       0.39      0.50      0.44       507\n\n    accuracy                           0.88      5470\n   macro avg       0.67      0.71      0.69      5470\nweighted avg       0.90      0.88      0.89      5470\n"
+    }
+  },
+  "model": {
+    "type": "tfidf_logistic_regression",
+    "tfidf": {
+      "max_features": 50000,
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2,
+      "max_df": 0.95,
+      "sublinear_tf": true
+    },
+    "logistic_regression": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "max_iter": 1000,
+      "solver": "lbfgs"
+    }
+  },
+  "training": {
+    "primary_metric": "macro_f1",
+    "threshold_tuning": {
+      "enabled": true,
+      "split": "dev",
+      "metric": "macro_f1",
+      "min_threshold": 0.05,
+      "max_threshold": 0.95,
+      "step": 0.01
+    }
+  }
+}

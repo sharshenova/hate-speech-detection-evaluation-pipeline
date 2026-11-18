@@ -1,0 +1,9 @@
+{
+  "source": "exp-008-qwen-lora DGHD first adapter (metrics_reeval ~0.890 test)",
+  "split": "train_all",
+  "sample_size": 32889,
+  "sample_seed": null,
+  "f1_macro": 0.996115062431778,
+  "parse_failures": 0,
+  "adapter_dir": "results/exp-008-qwen-lora/dghd/model"
+}

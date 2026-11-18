@@ -1,0 +1,29 @@
+# Gemma 4 12B on GHC test - Short GHC (009f prompt), thinking OFF.
+# One-shot test eval for comparison with supervised encoders (dev-selected prompt).
+# Run: python scripts/training/eval_zero_shot.py --config configs/exp-012a-gemma4-ghc-vo-note-test-nothink.yaml
+
+experiment_id: exp-012a-gemma4-ghc-vo-note-test-nothink
+dataset: ghc
+seed: 42
+eval_split: test
+
+prompt_config: configs/prompts/ghc-zero-shot-short.yaml
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: ollama_chat
+  name_or_path: gemma4:12b
+  base_url: http://127.0.0.1:11435
+  enable_thinking: false
+  think: false
+  max_new_tokens: 16
+  temperature: 0
+  stop:
+    - "\n"
+  request_timeout_s: 120
+  log_every: 50
+
+results_dir: results/exp-012a-gemma4-ghc-vo-note-test-nothink

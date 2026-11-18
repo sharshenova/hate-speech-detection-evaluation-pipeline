@@ -1,0 +1,44 @@
+# Zero-shot - Short KTC definition.
+# Merges MMHS (Gomez et al.) community-attack framing with HateXplain
+# hate!=offensive / identity-mention caveats. Used by exp-011b.
+
+prompt_id: ktc-zero-shot-short
+name: KTC zero-shot - Short KTC
+description: >
+  Hate = attack/threat/hatred toward a group or members on listed identity
+  axes; offensive/profane language and identity mentions alone are non-hate
+  unless they attack such a group. Aligns with KTC binary labels
+  (HateXplain hatespeech-only; MMHS community-attack hate).
+
+dataset: ktc
+eval_split: dev
+text_placeholder: "{text}"
+
+messages:
+  system: |
+    You classify social media posts. Answer only with the requested label.
+  user: |
+    Post:
+    {text}
+
+    Is this hate speech? Hate is speech that attacks, threatens, or expresses
+    hatred toward a group or its members based on race/ethnicity, religion,
+    national origin, gender, gender identity, sexual orientation, disability,
+    age, or immigration/refugee status. Offensive, profane, or rude language
+    is not hate unless it attacks such a group. Reclaimed or everyday use of
+    slurs, and mentioning an identity without attacking it, are non-hate.
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - yes
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - no

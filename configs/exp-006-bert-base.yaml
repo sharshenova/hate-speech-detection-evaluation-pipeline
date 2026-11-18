@@ -1,0 +1,53 @@
+# BERT-base-uncased sequence classifier - standard transformer baseline.
+# Requires: pip install -e ".[dev,ml]"
+# Run: python scripts/training/train.py --config configs/exp-006-bert-base.yaml --dataset {ghc|dghd|ktc}
+#
+# Hyperparams: 2e-5 LR (BERT fine-tuning default), 3 epochs, balanced class weights  - 
+# aligned with project transformer protocol (exp-002/004) except model checkpoint.
+
+experiment_id: exp-006-bert-base
+dataset: ghc
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: bert_sequence_classifier
+  pretrained_name: bert-base-uncased
+  device: auto
+  max_length: 128
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  epochs: 3
+  class_weight: balanced
+  max_grad_norm: 1.0
+  gradient_checkpointing: true
+  train_eval_sample: 5000
+  cuda:
+    batch_size: 64
+    gradient_accumulation_steps: 1
+    gradient_checkpointing: false
+    num_workers: 8
+    pin_memory: true
+    bf16: true
+  early_stopping:
+    enabled: true
+    patience: 1
+    metric: macro_f1
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: true
+    split: dev
+    metric: macro_f1
+    min_threshold: 0.05
+    max_threshold: 0.95
+    step: 0.01
+
+results_dir: results/exp-006-bert-base

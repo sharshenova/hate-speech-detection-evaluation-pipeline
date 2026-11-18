@@ -1,0 +1,60 @@
+# Qwen3.5-4B bf16 LoRA on KTC - combined prompt + class-balanced sampling.
+# Requires: pip install -e ".[dev,ml,lora]" && causal-conv1d + flash-linear-attention
+# Run: python scripts/training/train.py --config configs/exp-014-qwen35-ktc.yaml --dataset ktc
+
+experiment_id: exp-014-qwen35-ktc
+dataset: ktc
+seed: 42
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: lora_causal_lm
+  name_or_path: Qwen/Qwen3.5-4B
+  device: auto
+  qlora: false
+  bf16: true
+  enable_thinking: false
+  max_length: 384
+  max_new_tokens: 8
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  batch_size: 2
+  gradient_accumulation_steps: 16
+  epochs: 3
+  max_grad_norm: 1.0
+  gradient_checkpointing: true
+  class_balanced_sampling: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  inference_batch_size: 16
+  train_eval_sample: 2000
+  epoch_eval_sample: 2000
+  cuda:
+    batch_size: 4
+    gradient_accumulation_steps: 8
+    inference_batch_size: 24
+    num_workers: 4
+    pin_memory: true
+  early_stopping:
+    enabled: true
+    patience: 1
+    metric: macro_f1
+  prompt_config_by_dataset:
+    ktc: configs/prompts/ktc-lora-classify-combined.yaml
+
+training:
+  primary_metric: macro_f1
+  threshold_tuning:
+    enabled: true
+    split: dev
+    metric: macro_f1
+    min_threshold: 0.05
+    max_threshold: 0.95
+    step: 0.01
+
+results_dir: results/exp-014-qwen35-ktc

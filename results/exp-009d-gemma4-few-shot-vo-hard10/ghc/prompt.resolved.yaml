@@ -1,0 +1,158 @@
+prompt_id: ghc-few-shot-short-10x10
+name: GHC few-shot - Short GHC + 10/10
+description: 'Same Short GHC rule as exp-007d, plus 10 hate and 10 non-hate
+  GHC train examples mined from QLoRA hard errors / labeled train (see few_shot_examples_path).
+
+  '
+dataset: ghc
+eval_split: dev
+text_placeholder: '{text}'
+few_shot_examples_path: data/processed/ghc/hard_errors/ghc_few_shot_hard_examples_10x10.yaml
+messages:
+  system: 'You classify social media posts. Answer only with the requested label.
+
+    '
+  user: 'Study these labeled examples:
+
+
+    {few_shot_block}
+
+
+    Now classify the following post.
+
+
+    Post:
+
+    {text}
+
+
+    Is this hate speech? Hate speech attacks, dehumanizes, or calls for violence
+
+    against a person or group based on a protected characteristic (such as race,
+
+    ethnicity, religion, nationality, gender, sexual orientation, disability, or
+
+    political ideology). Offensive or profane language alone is NOT hate speech
+
+    unless it contains such a group-based attack.
+
+
+    Answer with exactly one word: hate or non-hate.
+
+    '
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false
+few_shot_examples:
+- source_post_id: 19754
+  category: race_ethnostate
+  post: 'The true test of the virtue of a person in the Current Year is to hear that
+    person audibly state that white people have a right to their own spaces/neighborhoods/communities/cities/nations.
+    #prowhite Free speech extends to free association.'
+  label: hate
+- source_post_id: 21022
+  category: race_coded_exclusion
+  post: Because Bond is a White, Aristocratic European man, no matter how good of
+    an actor Elba is he'd never be able to pull of the role with believability-
+  label: hate
+- source_post_id: 7684
+  category: nationality_xenophobia
+  post: go back to your shithole and learn how to be civilized
+  label: hate
+- source_post_id: 22538
+  category: religion_antisemitism
+  post: Holocaust as a political tool. Didn't see that coming.  Jew-nited States of
+    America holocaust museum revokes suu kyi's human rights award
+  label: hate
+- source_post_id: 9016
+  category: religion_antisemitism
+  post: Wouldn't have even been news if it wasn't another Jewish victim to push.
+  label: hate
+- source_post_id: 8620
+  category: religion_islamophobia
+  post: 'Let''s give Muslims the choice to convert to a real religion of peace, and
+    if they do not, deport them to a Muslim country. This is a war and the West is
+    getting its butt kicked by these savages and their traitorous left wing allies,
+    and the #NWO'
+  label: hate
+- source_post_id: 18588
+  category: sxo_gen_anti_trans
+  post: 'The very werid #traitortranny Chelsea Manning said that she crashed an event
+    in NYC... he is a liar, he hung around awkwardly and no one paid him any mind.'
+  label: hate
+- source_post_id: 27645
+  category: sxo_gen_anti_trans
+  post: '#Abomination these idiots will sell their soul for a buck. #Pathetic   Caitlyn
+    Jenner Says Trump Set Back the Transgender Community 20 Years  https://search.app.goo.gl/Hj6X'
+  label: hate
+- source_post_id: 7175
+  category: cv_violence
+  post: Given the opportunity, I would be tempted to corner, subdue and ass-rape Brian
+    Kilmeade.
+  label: hate
+- source_post_id: 6466
+  category: mph_disability_slur
+  post: You're a fucking retard babbling incoherently. You haven't made a single point
+    yet, much less one worth opposing.
+  label: hate
+- source_post_id: 25395
+  category: vo_political_rage
+  post: See how this works? There isn't anything more fucked up than this. I think
+    its time to really throw every single one of the motherfucker's out and begin
+    fresh.
+  label: non-hate
+- source_post_id: 24436
+  category: vo_gender_assumption_joke
+  post: Give her an award for most pathetic.  Am I in trouble for assuming its gender?
+  label: non-hate
+- source_post_id: 5471
+  category: vo_vulgar_political
+  post: Face it. America is a shit hole country that doesn't even care enough about
+    its own children to actually make efforts to keep them safe. You can fuck off
+    now.
+  label: non-hate
+- source_post_id: 24507
+  category: vo_partisan_insult
+  post: Just dumped Netflix Fuck Obama's propaganda outlet.
+  label: non-hate
+- source_post_id: 3426
+  category: partisan_insult_not_group_hate
+  post: Facebook has its uses but personally I got sick of seeing wankers showing
+    off their leftist credentials. Fuck that shit.
+  label: non-hate
+- source_post_id: 10924
+  category: political_media_claim
+  post: The NYT op-ed with the "resister" is a psy-op they're playing on Trump. They
+    want him to be paranoid.
+  label: non-hate
+- source_post_id: 25216
+  category: political_media_claim
+  post: Not only is Twitter censoring right wing views but this is a move specifically
+    designed to make it appear Trump has less support than he actually does. Who do
+    you think likes & retweet his tweets?
+  label: non-hate
+- source_post_id: 20349
+  category: hard_race_mention_individualist
+  post: I am pretty right of center, but I have a problem with Marxism/Collectivism
+    in all of its forms. Some brown people are intellectuals, some can run a 4-minute
+    mile. Some white people are thick as shit and morbidly obese. I'm an individualist,
+    so please don't think this fuckwit speaks for me.
+  label: non-hate
+- source_post_id: 19553
+  category: hard_race_demographic_claim
+  post: That's true, whites are far less likely to use food stamps, statistically.  http://www.pewresearch.org/fact-tank/2013/07/12/the-politics-and-demographics-of-food-stamp-recipients/
+  label: non-hate
+- source_post_id: 4666
+  category: hard_sxo_political_mention
+  post: Gay marriage advocates in Australia gearing up to do a Hillary.
+  label: non-hate

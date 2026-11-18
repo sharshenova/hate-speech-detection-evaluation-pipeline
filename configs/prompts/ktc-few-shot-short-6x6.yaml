@@ -1,0 +1,50 @@
+# Few-shot - Short KTC + 6/6 train examples; no-think.
+# Examples: data/processed/ktc/hard_errors/ktc_few_shot_hard_examples_6x6.yaml
+# Used by exp-011c.
+
+prompt_id: ktc-few-shot-short-6x6
+name: KTC few-shot - Short KTC + 6/6
+description: >
+  Same Short KTC definition as exp-011b, with 6 hate + 6
+  non-hate KTC train examples (interleaved). Designed for Gemma without thinking.
+
+dataset: ktc
+eval_split: dev
+text_placeholder: "{text}"
+
+few_shot_examples_path: data/processed/ktc/hard_errors/ktc_few_shot_hard_examples_6x6.yaml
+few_shot_interleave: true
+
+messages:
+  system: |
+    You classify social media posts. Reply with exactly one word: hate or non-hate.
+    Do not explain. Do not restate the examples.
+  user: |
+    Study these labeled examples, then classify the new post.
+
+    {few_shot_block}
+
+    Post:
+    {text}
+
+    Is this hate speech? Hate is speech that attacks, threatens, or expresses
+    hatred toward a group or its members based on race/ethnicity, religion,
+    national origin, gender, gender identity, sexual orientation, disability,
+    age, or immigration/refugee status. Offensive, profane, or rude language
+    is not hate unless it attacks such a group. Reclaimed or everyday use of
+    slurs, and mentioning an identity without attacking it, are non-hate.
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - yes
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - no

@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-012c-gemma4-ktc-combined-test-nothink",
+  "dataset": "ktc",
+  "seed": 42,
+  "config_path": "configs/exp-012c-gemma4-ktc-combined-test-nothink.yaml",
+  "prompt_config_path": "configs/prompts/ktc-zero-shot-short.yaml",
+  "prompt_id": "ktc-zero-shot-short",
+  "evaluated_at_utc": "2026-07-22T18:18:53.460062+00:00",
+  "eval_split": "test",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 16979,
+  "class_distribution": {
+    "0": 13492,
+    "1": 3487
+  },
+  "metrics": {
+    "test": {
+      "accuracy": 0.7926261852877083,
+      "precision_macro": 0.6727970231764945,
+      "recall_macro": 0.6459017318231939,
+      "f1_macro": 0.6564396192982577,
+      "precision_weighted": 0.7781940136751929,
+      "recall_weighted": 0.7926261852877083,
+      "f1_weighted": 0.7838995437813685,
+      "per_class": {
+        "0": {
+          "precision": 0.8516611412851802,
+          "recall": 0.8949006818855618,
+          "f1": 0.8727456720517547,
+          "support": 13492
+        },
+        "1": {
+          "precision": 0.4939329050678087,
+          "recall": 0.39690278176082594,
+          "f1": 0.4401335665447607,
+          "support": 3487
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.89      0.87     13492\n           1       0.49      0.40      0.44      3487\n\n    accuracy                           0.79     16979\n   macro avg       0.67      0.65      0.66     16979\nweighted avg       0.78      0.79      0.78     16979\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "ktc-zero-shot-short",
+    "name": "KTC zero-shot - Short KTC",
+    "description": "Hate = attack/threat/hatred toward a group or members on listed identity axes; offensive/profane language and identity mentions alone are non-hate unless they attack such a group. Aligns with KTC binary labels (HateXplain hatespeech-only; MMHS community-attack hate).\n"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "experiment_id": "exp-007a-zero-shot-minimal",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-007a-zero-shot-minimal.yaml",
+  "prompt_config_path": "configs/prompts/ghc-zero-shot-minimal.yaml",
+  "prompt_id": "ghc-zero-shot-minimal",
+  "evaluated_at_utc": "2026-07-14T13:35:11.739073+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 2195,
+  "class_distribution": {
+    "0": 2001,
+    "1": 194
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.8797266514806378,
+      "precision_macro": 0.6733090041913572,
+      "recall_macro": 0.7594746441212383,
+      "f1_macro": 0.7031011755447347,
+      "precision_weighted": 0.9095323662253851,
+      "recall_weighted": 0.8797266514806378,
+      "f1_weighted": 0.8916199203859497,
+      "per_class": {
+        "0": {
+          "precision": 0.9602543720190779,
+          "recall": 0.9055472263868066,
+          "f1": 0.9320987654320988,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.38636363636363635,
+          "recall": 0.6134020618556701,
+          "f1": 0.47410358565737054,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.96      0.91      0.93      2001\n           1       0.39      0.61      0.47       194\n\n    accuracy                           0.88      2195\n   macro avg       0.67      0.76      0.70      2195\nweighted avg       0.91      0.88      0.89      2195\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "llama3.2:3b-instruct-q4_K_M",
+    "base_url": "http://127.0.0.1:11434",
+    "max_new_tokens": 8,
+    "log_every": 100
+  },
+  "prompt": {
+    "prompt_id": "ghc-zero-shot-minimal",
+    "name": "GHC zero-shot - minimal",
+    "description": "Vague hate-speech question with no coding rules. Baseline for prompt-engineering comparison against the Detailed GHC definition.\n"
+  }
+}

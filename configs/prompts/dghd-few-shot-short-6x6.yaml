@@ -1,0 +1,49 @@
+# Few-shot - Short DGHD + 6/6 train examples; no-think classification.
+# Examples: data/processed/dghd/hard_errors/dghd_few_shot_hard_examples_6x6.yaml
+# Used by exp-010c.
+
+prompt_id: dghd-few-shot-short-6x6
+name: DGHD few-shot - Short DGHD + 6/6
+description: >
+  Same Short DGHD definition as exp-010b, with 6 hate + 6 non-hate DGHD
+  train examples (interleaved). Designed for Gemma without thinking.
+
+dataset: dghd
+eval_split: dev
+text_placeholder: "{text}"
+
+few_shot_examples_path: data/processed/dghd/hard_errors/dghd_few_shot_hard_examples_6x6.yaml
+few_shot_interleave: true
+
+messages:
+  system: |
+    You classify social media posts. Reply with exactly one word: hate or non-hate.
+    Do not explain. Do not restate the examples.
+  user: |
+    Study these labeled examples, then classify the new post.
+
+    {few_shot_block}
+
+    Post:
+    {text}
+
+    Is this hate speech? Hate is abusive speech targeting a group or its
+    members based on disability, gender, immigration status, national origin,
+    race/ethnicity, religion, sexual orientation, class, or age. Identity
+    mentions or offensive language alone are not hate unless the post abusively
+    targets a group or its members. Answer with exactly one word: hate or
+    non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - yes
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - no

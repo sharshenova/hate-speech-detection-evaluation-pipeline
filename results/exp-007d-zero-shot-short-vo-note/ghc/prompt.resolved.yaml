@@ -1,0 +1,47 @@
+prompt_id: ghc-zero-shot-short
+name: GHC zero-shot - Short GHC
+description: 'Minimal hate-speech question plus one compact rule distilled from the
+  GHC paper: group-based attacks or calls for violence count as hate; offensive language
+  alone does not. Tests whether a single precision-nudging note beats both the vague
+  minimal prompt and the long Detailed GHC definition.
+
+  '
+dataset: ghc
+eval_split: dev
+text_placeholder: '{text}'
+messages:
+  system: 'You classify social media posts. Answer only with the requested label.
+
+    '
+  user: 'Post:
+
+    {text}
+
+
+    Is this hate speech? Hate speech attacks, dehumanizes, or calls for violence
+
+    against a person or group based on a protected characteristic (such as race,
+
+    ethnicity, religion, nationality, gender, sexual orientation, disability, or
+
+    political ideology). Offensive or profane language alone is NOT hate speech
+
+    unless it contains such a group-based attack.
+
+
+    Answer with exactly one word: hate or non-hate.
+
+    '
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false

@@ -1,0 +1,29 @@
+# Gemma 4 12B on DGHD dev - minimal prompt, thinking OFF.
+# Pair for no-think KTC/GHC comparison (ablation vs exp-010a think ON).
+# Run: python scripts/training/eval_zero_shot.py --config configs/exp-010d-gemma4-dghd-minimal-nothink.yaml
+
+experiment_id: exp-010d-gemma4-dghd-minimal-nothink
+dataset: dghd
+seed: 42
+eval_split: dev
+
+prompt_config: configs/prompts/dghd-zero-shot-minimal.yaml
+
+data:
+  text_column: text
+  label_column: hate
+
+model:
+  type: ollama_chat
+  name_or_path: gemma4:12b
+  base_url: http://127.0.0.1:11435
+  enable_thinking: false
+  think: false
+  max_new_tokens: 16
+  temperature: 0
+  stop:
+    - "\n"
+  request_timeout_s: 120
+  log_every: 50
+
+results_dir: results/exp-010d-gemma4-dghd-minimal-nothink

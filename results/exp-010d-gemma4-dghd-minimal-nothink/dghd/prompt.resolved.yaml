@@ -1,0 +1,34 @@
+prompt_id: dghd-zero-shot-minimal
+name: DGHD zero-shot - minimal
+description: 'Vague hate-speech question with no coding rules. Baseline for Gemma
+  on DGHD.
+
+  '
+dataset: dghd
+eval_split: dev
+text_placeholder: '{text}'
+messages:
+  system: 'You classify social media posts. Answer only with the requested label.
+
+    '
+  user: 'Post:
+
+    {text}
+
+
+    Is this hate speech? Answer with exactly one word: hate or non-hate.
+
+    '
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false

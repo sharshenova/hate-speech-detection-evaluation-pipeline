@@ -1,0 +1,184 @@
+{
+  "experiment_id": "exp-004a-deberta-lr2e-5",
+  "dataset": "ktc",
+  "seed": 42,
+  "config_path": "configs/exp-004a-deberta-lr2e-5.yaml",
+  "trained_at_utc": "2026-07-09T21:23:13.345912+00:00",
+  "device": "cuda",
+  "primary_metric": "macro_f1",
+  "threshold": 0.7300000000000004,
+  "dev_threshold_macro_f1": 0.7083483869524028,
+  "best_epoch": 1,
+  "epochs_run": 3,
+  "total_training_seconds": 765.5,
+  "train_eval_note": "train metrics computed on a fixed stratified sample of 5,000 rows",
+  "data": {
+    "train_rows": 135824,
+    "dev_rows": 16978,
+    "test_rows": 16979,
+    "train_class_distribution": {
+      "0": 107931,
+      "1": 27893
+    },
+    "dev_class_distribution": {
+      "0": 13492,
+      "1": 3486
+    },
+    "test_class_distribution": {
+      "0": 13492,
+      "1": 3487
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5880993382721873,
+      "train_eval_loss": 0.5287753000855446,
+      "dev_loss": 0.5451133071928096,
+      "train_macro_f1": 0.7081187361776574,
+      "dev_macro_f1": 0.6995168341130455,
+      "learning_rate_end": 1.418406547519626e-05,
+      "train_seconds": 243.6,
+      "eval_seconds": 12.4
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.5520019685666178,
+      "train_eval_loss": 0.5381102427840233,
+      "dev_loss": 0.5657867916992733,
+      "train_macro_f1": 0.6996538054643644,
+      "dev_macro_f1": 0.6823285288581857,
+      "learning_rate_end": 7.09203273759813e-06,
+      "train_seconds": 242.9,
+      "eval_seconds": 11.5
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5294781412036139,
+      "train_eval_loss": 0.5223832473158836,
+      "dev_loss": 0.5651540766309079,
+      "train_macro_f1": 0.7051221302790764,
+      "dev_macro_f1": 0.6852676233409888,
+      "learning_rate_end": 0.0,
+      "train_seconds": 242.6,
+      "eval_seconds": 11.5
+    }
+  ],
+  "metrics": {
+    "train": {
+      "accuracy": 0.8164,
+      "precision_macro": 0.7190446118179682,
+      "recall_macro": 0.7209347124247385,
+      "f1_macro": 0.7199792772463823,
+      "precision_weighted": 0.8171996335784972,
+      "recall_weighted": 0.8164,
+      "f1_weighted": 0.8167943587842683,
+      "per_class": {
+        "0": {
+          "precision": 0.8856349406715476,
+          "recall": 0.8829599798640826,
+          "f1": 0.8842954373582051,
+          "support": 3973
+        },
+        "1": {
+          "precision": 0.5524542829643888,
+          "recall": 0.5589094449853943,
+          "f1": 0.5556631171345595,
+          "support": 1027
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.88      0.88      3973\n           1       0.55      0.56      0.56      1027\n\n    accuracy                           0.82      5000\n   macro avg       0.72      0.72      0.72      5000\nweighted avg       0.82      0.82      0.82      5000\n"
+    },
+    "dev": {
+      "accuracy": 0.8104605960654965,
+      "precision_macro": 0.7092521730910535,
+      "recall_macro": 0.7074643710584152,
+      "f1_macro": 0.7083483869524028,
+      "precision_weighted": 0.8096578324488045,
+      "recall_weighted": 0.8104605960654965,
+      "f1_weighted": 0.8100540174904892,
+      "per_class": {
+        "0": {
+          "precision": 0.8796186816435116,
+          "recall": 0.8822265045953157,
+          "f1": 0.8809206631142688,
+          "support": 13492
+        },
+        "1": {
+          "precision": 0.5388856645385954,
+          "recall": 0.5327022375215146,
+          "f1": 0.5357761107905367,
+          "support": 3486
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.88      0.88      0.88     13492\n           1       0.54      0.53      0.54      3486\n\n    accuracy                           0.81     16978\n   macro avg       0.71      0.71      0.71     16978\nweighted avg       0.81      0.81      0.81     16978\n"
+    },
+    "test": {
+      "accuracy": 0.8064668119441664,
+      "precision_macro": 0.7023504996931966,
+      "recall_macro": 0.697036559748287,
+      "f1_macro": 0.6996021091053786,
+      "precision_weighted": 0.8039880940020026,
+      "recall_weighted": 0.8064668119441664,
+      "f1_weighted": 0.8051794125419414,
+      "per_class": {
+        "0": {
+          "precision": 0.874834728955487,
+          "recall": 0.8827453305662615,
+          "f1": 0.8787722275510957,
+          "support": 13492
+        },
+        "1": {
+          "precision": 0.5298662704309064,
+          "recall": 0.5113277889303126,
+          "f1": 0.5204319906596614,
+          "support": 3487
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.88      0.88     13492\n           1       0.53      0.51      0.52      3487\n\n    accuracy                           0.81     16979\n   macro avg       0.70      0.70      0.70     16979\nweighted avg       0.80      0.81      0.81     16979\n"
+    }
+  },
+  "model": {
+    "type": "deberta_sequence_classifier",
+    "pretrained_name": "microsoft/deberta-v3-base",
+    "device": "auto",
+    "max_length": 128,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "class_weight": "balanced",
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": false,
+    "train_eval_sample": 5000,
+    "cuda": {
+      "batch_size": 64,
+      "gradient_accumulation_steps": 1,
+      "gradient_checkpointing": false,
+      "num_workers": 8,
+      "pin_memory": true,
+      "bf16": false
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 1,
+      "metric": "macro_f1"
+    },
+    "num_workers": 8,
+    "pin_memory": true,
+    "bf16": false
+  },
+  "training": {
+    "primary_metric": "macro_f1",
+    "threshold_tuning": {
+      "enabled": true,
+      "split": "dev",
+      "metric": "macro_f1",
+      "min_threshold": 0.05,
+      "max_threshold": 0.95,
+      "step": 0.01
+    }
+  }
+}

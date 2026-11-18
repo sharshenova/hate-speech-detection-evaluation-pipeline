@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-010d-gemma4-dghd-minimal-nothink",
+  "dataset": "dghd",
+  "seed": 42,
+  "config_path": "configs/exp-010d-gemma4-dghd-minimal-nothink.yaml",
+  "prompt_config_path": "configs/prompts/dghd-zero-shot-minimal.yaml",
+  "prompt_id": "dghd-zero-shot-minimal",
+  "evaluated_at_utc": "2026-07-21T11:14:05.489283+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 4094,
+  "class_distribution": {
+    "0": 1931,
+    "1": 2163
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.811675622862726,
+      "precision_macro": 0.8157816893833458,
+      "recall_macro": 0.8148876651312635,
+      "f1_macro": 0.8116548452481047,
+      "precision_weighted": 0.8187773102411566,
+      "recall_weighted": 0.811675622862726,
+      "f1_weighted": 0.8115427427692186,
+      "per_class": {
+        "0": {
+          "precision": 0.7629193109700816,
+          "recall": 0.871569135163128,
+          "f1": 0.813633067440174,
+          "support": 1931
+        },
+        "1": {
+          "precision": 0.8686440677966102,
+          "recall": 0.758206195099399,
+          "f1": 0.8096766230560355,
+          "support": 2163
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.76      0.87      0.81      1931\n           1       0.87      0.76      0.81      2163\n\n    accuracy                           0.81      4094\n   macro avg       0.82      0.81      0.81      4094\nweighted avg       0.82      0.81      0.81      4094\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "dghd-zero-shot-minimal",
+    "name": "DGHD zero-shot - minimal",
+    "description": "Vague hate-speech question with no coding rules. Baseline for Gemma on DGHD.\n"
+  }
+}

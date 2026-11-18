@@ -1,0 +1,103 @@
+# Few-shot prompt - Detailed GHC with 5 paraphrased train examples.
+# Examples selected from GHC train (deduplicated labeled split); see experiment doc for post_ids.
+# Intended model: Llama 3.2 3B Instruct via Ollama
+
+prompt_id: ghc-few-shot-detailed
+name: GHC few-shot - Detailed
+description: >
+  Detailed GHC definition plus five paraphrased examples from difficult train cases
+  (VO-only non-hate, HD political dehumanization, CV incitement). Examples are fixed for
+  every dev post.
+
+dataset: ghc
+eval_split: dev
+text_placeholder: "{text}"
+
+few_shot_examples:
+  - source_post_id: 5767
+    category: plain_non_hate
+    post: "Please join this platform - we saved an account for you."
+    label: non-hate
+    selection_note: Neutral invite; no insult or group attack.
+
+  - source_post_id: 26639
+    category: vo_only_individual_insult
+    post: "Daily reminder: that TV host is pathetic and weak."
+    label: non-hate
+    selection_note: Vulgar personal insult at a named individual; VO-only, not HD/CV.
+
+  - source_post_id: 5340
+    category: vo_only_profanity
+    post: "Congratulations - this is a damn badge of honor!"
+    label: non-hate
+    selection_note: Profanity without group target; common false-positive pattern for LLMs.
+
+  - source_post_id: 8723
+    category: hd_political_dehumanization
+    post: "Members of the opposing party are vile, traitorous garbage."
+    label: hate
+    selection_note: Dehumanizing attack on a political group (HD); political hate in scope.
+
+  - source_post_id: 27384
+    category: cv_political_violence
+    post: "Politicians who lie should be shot by ordinary gun owners."
+    label: hate
+    selection_note: Explicit call for violence against a group (CV).
+
+messages:
+  system: |
+    You are a hate speech classifier. Apply the coding rules exactly. Do not treat
+    general offensiveness or profanity as hate unless the rules below say so.
+    You must always answer with exactly one word: hate or non-hate. Never refuse to classify.
+  user: |
+    Classify social media posts using the **strict Gab Hate Corpus (GHC) definition**
+    used in this project.
+
+    A post is **hate** if and only if it contains at least one of:
+
+    1. **Dehumanizing rhetoric (HD)** - an assault on human dignity targeting a social
+       group (or an individual because of group membership), such as:
+       - asserting or implying group inferiority (intelligence, genetics, capacity, etc.);
+       - degrading or dehumanizing a group (e.g. comparing to animals or subhuman entities or using hateful slurs intended to harm);
+       - inciting hatred via harmful stereotypes, historical or political references, or
+         endorsement of hate groups or ideologies.
+
+    2. **Call for violence (CV)** - explicit advocacy, incitement, or endorsement of
+       violence against a group, or against someone because of their group membership.
+
+    Protected group identities include race, ethnicity, religion, nationality/regionalism,
+    ideology, gender, sexual orientation, political identification, mental/physical ability.
+
+    A post is **non-hate** if it does not meet HD or CV, including:
+
+    - **Offensive or vulgar language alone (VO)** - insults, profanity, or slurs that are
+      not a group-level attack and do not dehumanize or call for violence.
+    - Rude or offensive content that is not dehumanizing and does not call for violence.
+
+    **Political hate** (attacks on people or groups because of political affiliation or
+    ideology) counts as hate when it meets HD or CV.
+
+    Study these labeled examples:
+
+    {few_shot_block}
+
+    Now classify the following post:
+
+    Post:
+    {text}
+
+    Answer with exactly one word: hate or non-hate.
+
+output:
+  format: single_token
+  valid_labels:
+    - hate
+    - non-hate
+  parse_as_hate:
+    - hate
+    - "yes"
+  parse_as_non_hate:
+    - non-hate
+    - nonhate
+    - not hate
+    - "no"

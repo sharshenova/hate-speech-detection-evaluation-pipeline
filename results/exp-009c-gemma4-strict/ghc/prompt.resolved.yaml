@@ -1,0 +1,49 @@
+prompt_id: ghc-zero-shot-detailed
+name: GHC zero-shot - Detailed
+description: 'Full Gab Hate Corpus coding rules as used in this thesis. Matches supervised GHC training labels: hd=1 OR cv=1 -> hate;
+  vo-only -> non-hate.
+
+  '
+dataset: ghc
+eval_split: dev
+text_placeholder: '{text}'
+messages:
+  system: 'You are a hate speech classifier. Apply the coding rules exactly. Do not
+    treat
+
+    general offensiveness or profanity as hate unless the rules below say so.
+
+    '
+  user: "Classify this social media post using the **strict Gab Hate Corpus (GHC)\
+    \ definition**\nused in this project.\n\nA post is **hate** if and only if it\
+    \ contains at least one of:\n\n1. **Dehumanizing rhetoric (HD)** - an assault\
+    \ on human dignity targeting a social\n   group (or an individual because of group\
+    \ membership), such as:\n   - asserting or implying group inferiority (intelligence,\
+    \ genetics, capacity, etc.);\n   - degrading or dehumanizing a group (e.g. comparing\
+    \ to animals or subhuman entities or using hateful slurs intended to harm);\n\
+    \   - inciting hatred via harmful stereotypes, historical or political references,\
+    \ or\n     endorsement of hate groups or ideologies.\n\n2. **Call for violence\
+    \ (CV)** - explicit advocacy, incitement, or endorsement of\n   violence against\
+    \ a group, or against someone because of their group membership.\n    \nProtected\
+    \ group identities include race, ethnicity, religion, nationality/regionalism,\
+    \ ideology, gender, sexual orientation, political identification, mental/physical\
+    \ ability. \n\nA post is **non-hate** if it does not meet HD or CV, including:\n\
+    \n- **Offensive or vulgar language alone (VO)** - insults, profanity, or slurs\
+    \ that are\n  not a group-level attack and do not dehumanize or call for violence.\n\
+    - Rude or offensive content that is not dehumanizing and does not call for violence.\n\
+    \n**Political hate** (attacks on people or groups because of political affiliation\
+    \ or\nideology) counts as hate when it meets HD or CV.\n\nPost:\n{text}\n\nAnswer\
+    \ with exactly one word: hate or non-hate.\n"
+output:
+  format: single_token
+  valid_labels:
+  - hate
+  - non-hate
+  parse_as_hate:
+  - hate
+  - true
+  parse_as_non_hate:
+  - non-hate
+  - nonhate
+  - not hate
+  - false

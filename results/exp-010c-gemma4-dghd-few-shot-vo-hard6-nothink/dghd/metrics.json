@@ -1,0 +1,62 @@
+{
+  "experiment_id": "exp-010c-gemma4-dghd-few-shot-vo-hard6-nothink",
+  "dataset": "dghd",
+  "seed": 42,
+  "config_path": "configs/exp-010c-gemma4-dghd-few-shot-vo-hard6-nothink.yaml",
+  "prompt_config_path": "configs/prompts/dghd-few-shot-short-6x6.yaml",
+  "prompt_id": "dghd-few-shot-short-6x6",
+  "evaluated_at_utc": "2026-07-21T02:23:38.957880+00:00",
+  "eval_split": "dev",
+  "primary_metric": "macro_f1",
+  "parse_failures": 0,
+  "eval_rows": 4094,
+  "class_distribution": {
+    "0": 1931,
+    "1": 2163
+  },
+  "metrics": {
+    "dev": {
+      "accuracy": 0.7906692721055203,
+      "precision_macro": 0.8274287879579784,
+      "recall_macro": 0.7999791943646177,
+      "f1_macro": 0.7876646872634264,
+      "precision_weighted": 0.8345002702778542,
+      "recall_weighted": 0.7906692721055203,
+      "f1_weighted": 0.7862333449977882,
+      "per_class": {
+        "0": {
+          "precision": 0.7026415094339623,
+          "recall": 0.9642672190574831,
+          "f1": 0.8129229425889544,
+          "support": 1931
+        },
+        "1": {
+          "precision": 0.9522160664819944,
+          "recall": 0.6356911696717522,
+          "f1": 0.7624064319378985,
+          "support": 2163
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.70      0.96      0.81      1931\n           1       0.95      0.64      0.76      2163\n\n    accuracy                           0.79      4094\n   macro avg       0.83      0.80      0.79      4094\nweighted avg       0.83      0.79      0.79      4094\n"
+    }
+  },
+  "model": {
+    "type": "ollama_chat",
+    "name_or_path": "gemma4:12b",
+    "base_url": "http://127.0.0.1:11435",
+    "enable_thinking": false,
+    "think": false,
+    "max_new_tokens": 16,
+    "temperature": 0,
+    "stop": [
+      "\n"
+    ],
+    "request_timeout_s": 120,
+    "log_every": 50
+  },
+  "prompt": {
+    "prompt_id": "dghd-few-shot-short-6x6",
+    "name": "DGHD few-shot - Short DGHD + 6/6",
+    "description": "Same Short DGHD definition as exp-010b, with 6 hate + 6 non-hate DGHD train examples (interleaved). Designed for Gemma without thinking.\n"
+  }
+}

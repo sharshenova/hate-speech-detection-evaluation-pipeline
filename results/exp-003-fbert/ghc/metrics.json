@@ -1,0 +1,184 @@
+{
+  "experiment_id": "exp-003-fbert",
+  "dataset": "ghc",
+  "seed": 42,
+  "config_path": "configs/exp-003-fbert.yaml",
+  "trained_at_utc": "2026-07-09T15:09:31.500955+00:00",
+  "device": "cuda",
+  "primary_metric": "macro_f1",
+  "threshold": 0.7300000000000004,
+  "dev_threshold_macro_f1": 0.7173013928984535,
+  "best_epoch": 3,
+  "epochs_run": 3,
+  "total_training_seconds": 52.6,
+  "train_eval_note": "train metrics computed on a fixed stratified sample of 5,000 rows",
+  "data": {
+    "train_rows": 19753,
+    "dev_rows": 2195,
+    "test_rows": 5470,
+    "train_class_distribution": {
+      "0": 18010,
+      "1": 1743
+    },
+    "dev_class_distribution": {
+      "0": 2001,
+      "1": 194
+    },
+    "test_class_distribution": {
+      "0": 4963,
+      "1": 507
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.4777272700009608,
+      "train_eval_loss": 0.33352206349372865,
+      "dev_loss": 0.40916673673523796,
+      "train_macro_f1": 0.7153762037979832,
+      "dev_macro_f1": 0.6643600275318686,
+      "learning_rate_end": 3.70059880239521e-05,
+      "train_seconds": 15.7,
+      "eval_seconds": 2.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3045810753762915,
+      "train_eval_loss": 0.2589482843875885,
+      "dev_loss": 0.39477407932281494,
+      "train_macro_f1": 0.7776406699678348,
+      "dev_macro_f1": 0.6694038989188588,
+      "learning_rate_end": 1.850299401197605e-05,
+      "train_seconds": 15.3,
+      "eval_seconds": 1.6
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.16302964174788456,
+      "train_eval_loss": 0.10836587995290756,
+      "dev_loss": 0.35755858818689984,
+      "train_macro_f1": 0.8984213840986414,
+      "dev_macro_f1": 0.7110354097220304,
+      "learning_rate_end": 0.0,
+      "train_seconds": 15.4,
+      "eval_seconds": 1.6
+    }
+  ],
+  "metrics": {
+    "train": {
+      "accuracy": 0.972,
+      "precision_macro": 0.8830090925554928,
+      "recall_macro": 0.9744046189068594,
+      "f1_macro": 0.9223602140018696,
+      "precision_weighted": 0.9775074310950702,
+      "recall_weighted": 0.972,
+      "f1_weighted": 0.9734899385492186,
+      "per_class": {
+        "0": {
+          "precision": 0.9977472403694526,
+          "recall": 0.97148497477517,
+          "f1": 0.9844409868859747,
+          "support": 4559
+        },
+        "1": {
+          "precision": 0.768270944741533,
+          "recall": 0.9773242630385488,
+          "f1": 0.8602794411177644,
+          "support": 441
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       1.00      0.97      0.98      4559\n           1       0.77      0.98      0.86       441\n\n    accuracy                           0.97      5000\n   macro avg       0.88      0.97      0.92      5000\nweighted avg       0.98      0.97      0.97      5000\n"
+    },
+    "dev": {
+      "accuracy": 0.9034168564920273,
+      "precision_macro": 0.7060011507479862,
+      "recall_macro": 0.7305741459167323,
+      "f1_macro": 0.7173013928984535,
+      "precision_weighted": 0.9092662107362952,
+      "recall_weighted": 0.9034168564920273,
+      "f1_weighted": 0.9061338705590868,
+      "per_class": {
+        "0": {
+          "precision": 0.9529113924050633,
+          "recall": 0.9405297351324338,
+          "f1": 0.9466800804828974,
+          "support": 2001
+        },
+        "1": {
+          "precision": 0.4590909090909091,
+          "recall": 0.520618556701031,
+          "f1": 0.48792270531400966,
+          "support": 194
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.94      0.95      2001\n           1       0.46      0.52      0.49       194\n\n    accuracy                           0.90      2195\n   macro avg       0.71      0.73      0.72      2195\nweighted avg       0.91      0.90      0.91      2195\n"
+    },
+    "test": {
+      "accuracy": 0.8952468007312614,
+      "precision_macro": 0.7003886507917716,
+      "recall_macro": 0.7421616212437521,
+      "f1_macro": 0.7183573066874538,
+      "precision_weighted": 0.9064370409508524,
+      "recall_weighted": 0.8952468007312614,
+      "f1_weighted": 0.9001842006803504,
+      "per_class": {
+        "0": {
+          "precision": 0.9533250722841801,
+          "recall": 0.9300826113237961,
+          "f1": 0.9415604283528812,
+          "support": 4963
+        },
+        "1": {
+          "precision": 0.44745222929936307,
+          "recall": 0.5542406311637081,
+          "f1": 0.4951541850220264,
+          "support": 507
+        }
+      },
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.95      0.93      0.94      4963\n           1       0.45      0.55      0.50       507\n\n    accuracy                           0.90      5470\n   macro avg       0.70      0.74      0.72      5470\nweighted avg       0.91      0.90      0.90      5470\n"
+    }
+  },
+  "model": {
+    "type": "fbert_sequence_classifier",
+    "pretrained_name": "diptanu/fBERT",
+    "device": "auto",
+    "max_length": 128,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "warmup_ratio": 0.1,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "class_weight": "balanced",
+    "max_grad_norm": 1.0,
+    "gradient_checkpointing": false,
+    "train_eval_sample": 5000,
+    "cuda": {
+      "batch_size": 64,
+      "gradient_accumulation_steps": 1,
+      "gradient_checkpointing": false,
+      "num_workers": 8,
+      "pin_memory": true,
+      "bf16": true
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 1,
+      "metric": "macro_f1"
+    },
+    "num_workers": 8,
+    "pin_memory": true,
+    "bf16": true
+  },
+  "training": {
+    "primary_metric": "macro_f1",
+    "threshold_tuning": {
+      "enabled": true,
+      "split": "dev",
+      "metric": "macro_f1",
+      "min_threshold": 0.05,
+      "max_threshold": 0.95,
+      "step": 0.01
+    }
+  }
+}
