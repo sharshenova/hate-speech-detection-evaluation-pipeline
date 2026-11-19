@@ -1,9 +1,10 @@
 # Hate speech detection evaluation pipeline
 
-Code for a Master's thesis on hate speech detection. Three training corpora
-(GHC, DGHD, KTC) are compared with a six-layer evaluation: in-domain metrics,
-paired statistical tests, error slices, HateCheck, Implicit Hate Corpus, and
-HateCheck identity FPED/FNED.
+This is the code for my thesis project, 'Multi-Layer Evaluation of Hate Speech Detectors Across Models and Datasets'.
+
+The project proposes a six-layer evaluation pipeline to compare hate speech detection models based on their performance, functional robustness, out-of-domain generalisation, and fairness across different protected identities.
+
+The project employed three datasets (GHC, DGHD and KTC), which were collected using various methodologies, to develop and test several model families for binary hate speech classification: BERT-based encoders, zero/few-shot prompt engineering (Llama 3.2 3B and Gemma 4 12B) and fine-tuned small instruction-based language models (Qwen2.5 3B + QLoRA and Qwen3.5 9B/4B + LoRA).
 
 Saved metrics and predictions are already in `results/`. Table scripts do not
 retrain models.
